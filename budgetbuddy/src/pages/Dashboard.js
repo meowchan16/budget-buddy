@@ -5,7 +5,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recha
 
 const COLORS = ['#1cb5e0', '#ff4b2b', '#FFBB28', '#A28DFF', '#00C49F'];
 
-function Dashboard({ expenses }) {
+function Dashboard({ expenses, userName }) {
   // Calculate total expenses
   const total = expenses.reduce((acc, current) => acc + current.amount, 0);
 
@@ -27,7 +27,7 @@ function Dashboard({ expenses }) {
   return (
     <div className="page-container dashboard-page">
       <div className="dashboard-header">
-        <h2>👋 Welcome Back!</h2>
+        <h2>👋 Welcome{userName ? `, ${userName}` : ' Back'}!</h2>
         <p>Here is your financial overview for this month.</p>
       </div>
 
