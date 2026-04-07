@@ -6,20 +6,27 @@ import History from './pages/History';
 import Navbar from './components/Navbar';
 import './App.css';
 
-function App() {
-  const [expenses, setExpenses] = useState([]);
+const DUMMY_DATA = [
+  { id: '1', title: 'Weekend Groceries', amount: 1500, category: 'Food' },
+  { id: '2', title: 'Monthly Train Pass', amount: 850, category: 'Travel' },
+  { id: '3', title: 'React Course', amount: 2000, category: 'Education' },
+  { id: '4', title: 'Movie Tickets', amount: 400, category: 'Entertainment' }
+];
 
-  // Load from local storage on initial render
-  useEffect(() => {
+function App() {
+  const [expenses, setExpenses] = useState(() => {
     const saved = localStorage.getItem("budgetData");
     if (saved) {
       try {
-        setExpenses(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        // If they already have an empty array, let's show them the dummy data once so they see the cool UI!
+        if (parsed.length > 0) return parsed;
       } catch (e) {
         console.error("Failed to parse local storage data", e);
       }
     }
-  }, []);
+    return DUMMY_DATA;
+  });
 
   // Save to local storage whenever expenses change
   useEffect(() => {
