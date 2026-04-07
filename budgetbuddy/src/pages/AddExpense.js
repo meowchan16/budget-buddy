@@ -9,14 +9,25 @@ function AddExpense({ addExpense }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !amount) {
-      alert("Please enter title and amount.");
+    if (!title.trim() || !amount) {
+      alert("Please enter a valid title and amount.");
       return;
     }
-    // Convert string to number as requested
-    addExpense({ title, amount: Number(amount), category });
     
-    // Reset form and navigate to History page
+    // Form Validation Polish
+    const parsedAmount = Number(amount);
+    if (parsedAmount <= 0) {
+      alert("Amount must be greater than zero.");
+      return;
+    }
+
+    addExpense({ 
+      id: Date.now().toString(), // Added unique ID for delete capability
+      title: title.trim(), 
+      amount: parsedAmount, 
+      category 
+    });
+    
     navigate("/history");
   };
 
@@ -35,6 +46,8 @@ function AddExpense({ addExpense }) {
           placeholder="Amount" 
           value={amount}
           onChange={(e) => setAmount(e.target.value)} 
+          min="1"
+          step="any"
           required
         />
         

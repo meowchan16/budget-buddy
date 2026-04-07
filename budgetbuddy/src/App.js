@@ -30,6 +30,10 @@ function App() {
     setExpenses([...expenses, expense]);
   };
 
+  const deleteExpense = (id) => {
+    setExpenses(expenses.filter(expense => expense.id !== id));
+  };
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -37,7 +41,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Dashboard expenses={expenses} />} />
           <Route path="/add" element={<AddExpense addExpense={addExpense} />} />
-          <Route path="/history" element={<History expenses={expenses} />} />
+          <Route path="/history" element={<History expenses={expenses} deleteExpense={deleteExpense} />} />
         </Routes>
       </div>
     </BrowserRouter>

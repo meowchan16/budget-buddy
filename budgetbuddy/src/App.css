@@ -88,11 +88,53 @@ body {
   padding: 15px 10px;
 }
 
+.expense-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
 .expense-item h3 {
   margin: 0;
   font-size: 1rem;
 }
 
+.expense-category {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  font-weight: normal;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
 .expense-list {
   text-align: left;
+}
+
+.chart-container {
+  margin-top: 30px;
+  padding: 20px 0;
+  background-color: #fcfcfc;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.chart-container h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
 }
