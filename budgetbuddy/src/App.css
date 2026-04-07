@@ -1,140 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
 body {
-  background-color: #f5f5f5;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .App {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: white;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.98);
   min-height: 100vh;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .App {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-radius: 20px;
+    min-height: auto;
+    overflow: hidden;
+  }
 }
 
 .navbar {
-  background-color: #2c3e50;
+  background: linear-gradient(90deg, #1cb5e0 0%, #000851 100%);
   color: white;
+  padding: 20px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .navbar h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
 .nav-links a {
-  color: white;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  margin-left: 15px;
-  font-size: 0.9rem;
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-  text-decoration: underline;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+  display: inline-block;
 }
 
+/* Page Animations */
 .page-container {
-  padding: 20px;
+  padding: 40px 30px;
+  flex: 1;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+/* Dashboard Summary */
 .summary-card {
-  background-color: #e0f7fa;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px 0;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  border-left: 5px solid #1cb5e0;
+  padding: 30px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.summary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.summary-card h2 {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.summary-card h1 {
+  font-size: 3.5rem;
+  color: #2c3e50;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+/* Forms */
 .expense-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  max-width: 350px;
-  margin: 0 auto;
+  gap: 20px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
 }
 
 .expense-form input, .expense-form select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.expense-form input:focus, .expense-form select:focus {
+  outline: none;
+  border-color: #1cb5e0;
+  box-shadow: 0 0 0 3px rgba(28, 181, 224, 0.2);
+  background: white;
 }
 
 .expense-form button {
-  padding: 10px;
-  background-color: #007bff;
+  padding: 15px;
+  background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(58, 123, 213, 0.4);
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 
 .expense-form button:hover {
-  background-color: #0056b3;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(58, 123, 213, 0.6);
+}
+
+/* History List */
+.expense-list {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
 }
 
 .expense-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eaeaea;
-  padding: 15px 10px;
+  padding: 20px 25px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
 }
 
-.expense-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
+.expense-item:last-child {
+  border-bottom: none;
 }
 
-.expense-item h3 {
-  margin: 0;
-  font-size: 1rem;
+.expense-item:hover {
+  background-color: #f8fbff;
+}
+
+.expense-details h3 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  font-weight: 600;
+  margin: 0 0 8px 0;
 }
 
 .expense-category {
-  font-size: 0.8rem;
-  color: #7f8c8d;
-  font-weight: normal;
+  display: inline-block;
+  background: #eef2f3;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #8e9eab;
+  margin-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
+/* Delete Button */
 .delete-btn {
-  background-color: #e74c3c;
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  padding: 8px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.8rem;
-  transition: background-color 0.2s;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(255, 65, 108, 0.3);
+  transition: all 0.3s ease;
 }
 
 .delete-btn:hover {
-  background-color: #c0392b;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 65, 108, 0.5);
 }
 
-.expense-list {
-  text-align: left;
-}
-
+/* Chart */
 .chart-container {
-  margin-top: 30px;
-  padding: 20px 0;
-  background-color: #fcfcfc;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  margin-top: 40px;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  text-align: center;
+  border: 1px solid #f0f0f0;
 }
 
 .chart-container h3 {
-  margin-top: 0;
+  color: #7f8c8d;
   margin-bottom: 20px;
-  color: #333;
 }
