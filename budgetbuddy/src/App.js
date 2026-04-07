@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import AddExpense from './pages/AddExpense';
 import History from './pages/History';
@@ -16,7 +16,7 @@ const DUMMY_DATA = [
 
 function App() {
   const [userName, setUserName] = useState(() => {
-    return localStorage.getItem("budgetUserName") || '';
+    return localStorage.getItem("budget_username_v2") || '';
   });
 
   const [expenses, setExpenses] = useState(() => {
@@ -37,7 +37,7 @@ function App() {
   }, [expenses]);
 
   const handleLogin = (name) => {
-    localStorage.setItem("budgetUserName", name);
+    localStorage.setItem("budget_username_v2", name);
     setUserName(name);
   };
 
@@ -54,7 +54,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter basename="/budget-buddy">
+    <HashRouter>
       <div className="App">
         <Navbar />
         <Routes>
@@ -63,7 +63,7 @@ function App() {
           <Route path="/history" element={<History expenses={expenses} deleteExpense={deleteExpense} />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
